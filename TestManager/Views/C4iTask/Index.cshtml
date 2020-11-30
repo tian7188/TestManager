@@ -1,0 +1,62 @@
+﻿@model IEnumerable<TestManager.Models.C4iTask>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@functions{
+        string getColor(TestManager.Models.C4iTask t)
+        {
+            return t.IsCompleted ? "green"
+                    : t.DueDate < DateTime.Now ? "red" : "lightGray";
+        }
+    }
+
+
+    <div class="col-md-4">
+        @Html.Label("Task List by  ")
+        @Html.Label(DateTime.Now.ToShortDateString())
+     </div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCompleted)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr bgcolor= @getColor(@item) >
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCompleted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
