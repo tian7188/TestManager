@@ -6,7 +6,7 @@ namespace TestManager.Models
 {
     /// <summary>
     /// Name as C4iTask;
-    /// "Task" may have potential naming conflicts with System.Threading.Tasks.Task;
+    /// Naming to  "Task" may have potential naming conflicts with System.Threading.Tasks.Task;
     /// </summary>
     public class C4iTask
     {
